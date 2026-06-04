@@ -28,7 +28,16 @@ def send_telegram_alert(new_date):
         f"▪ 변경: {new_date}\n\n"
         f"등급분류 및 개봉일이 특정되었을 수 있으니 KOBIS를 확인해 보세요."
     )
-    requests.post(api_url, data={"chat_id": TELEGRAM_CHAT_ID, "text": message})
+    try:
+        response = requests.post(api_url, data={"chat_id": TELEGRAM_CHAT_ID, "text": message})
+        response.raise_for_status()
+        result = response.json()
+        if result.get('ok'):
+            print("텔레그램 메시지 전송 성공")
+        else:
+            print(f"텔레그램 API 오류: {result.get('description')}")
+    except Exception as e:
+        print(f"텔레그램 메시지 전송 실패: {e}")
 
 def check_movie_update():
     try:
