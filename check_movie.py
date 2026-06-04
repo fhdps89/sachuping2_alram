@@ -29,7 +29,7 @@ def send_telegram_alert(new_date):
         f"등급분류 및 개봉일이 특정되었을 수 있으니 KOBIS를 확인해 보세요."
     )
     try:
-        response = requests.post(api_url, data={"chat_id": TELEGRAM_CHAT_ID, "text": message})
+        response = requests.post(api_url, json={"chat_id": TELEGRAM_CHAT_ID, "text": message})
         response.raise_for_status()
         result = response.json()
         if result.get('ok'):
