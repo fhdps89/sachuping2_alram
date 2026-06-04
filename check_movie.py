@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # 환경변수에서 텔레그램 봇 토큰 및 챗 ID 로드 (GitHub Secrets와 연동)
-TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
+TELEGRAM_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
 TELEGRAM_CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
 
 # KOBIS 영화 상세정보 호출 URL (사랑의 하츄핑: 고래보석의 전설, 코드: 20262381)
